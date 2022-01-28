@@ -54,7 +54,7 @@ def main():
   logging.info("args = %s", args)
 
   genotype = eval("genotypes.%s" % args.arch)
-  model = Network(args.init_channels, CIFAR_CLASSES, args.layers, args.auxiliary, genotype)
+  model = Network(args.init_channels, CIFAR_CLASSES, args.layers, args.auxiliary, genotype, args.drop_path_prob)
   model = model.cuda()
   torch.save(model, "./mode.pt")
   utils.load(model, args.model_path)
